@@ -2,6 +2,6 @@ import axios from "axios";
 
 const $axios = axios.create();
 
-$axios.defaults.baseURL = "http://127.0.0.1";
+$axios.defaults.baseURL = "http://127.0.0.1:3333";
 
 export default $axios;
