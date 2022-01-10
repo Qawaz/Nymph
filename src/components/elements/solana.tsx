@@ -1,9 +1,12 @@
-const Solana = ({ width, height, ...props }) => {
+import React from "react";
+import { SVGProps } from "react";
+
+const Solana: React.FC = (props: SVGProps<SVGElement>): JSX.Element => {
   return (
     <svg
       version="1.1"
-      width={width}
-      height={height}
+      width={props.width}
+      height={props.height}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       x="0px"
@@ -11,7 +14,6 @@ const Solana = ({ width, height, ...props }) => {
       viewBox="0 0 397.7 311.7"
       enableBackground="new 0 0 397.7 311.7"
       xmlSpace="preserve"
-      {...props}
     >
       <linearGradient
         id="SVGID_1_"
