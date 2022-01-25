@@ -1,18 +1,46 @@
-import { useState } from "react";
 import Button from "@/components/elements/button";
 import { Tab } from "@headlessui/react";
 import Input from "@/components/elements/input";
+import { useAppDispatch, useAppSelector } from "@/redux/appHooks";
+import {
+  AuthState,
+  setAddress,
+  signupWithPhantom,
+} from "@/redux/features/auth/authSlice";
+import { useState } from "react";
+import XMark from "@/components/elements/xMark";
+import Solana from "@/components/elements/solana";
+import EthereumIcon from "@/components/elements/ethereumIcon";
 
 const CreatingAccountPhases = () => {
-  const [address, setAddress] = useState();
+  const [username, setUsername] = useState("");
+
+  const dispatch = useAppDispatch();
+
+  const authState: AuthState = useAppSelector((state) => state.auth);
+
+  const saveAddressToStore = (address: string) => dispatch(setAddress(address));
 
   const connectAccount = async () => {
-    // const eth = window.ethereum;
-    //
-    // const accounts = await eth.request({ method: "eth_requestAccounts" });
-    //
-    // setAddress(accounts[0]);
-    // dispatch(ConnectWallet(accounts[0]));
+    const response = await window.solana.connect();
+
+    await saveAddressToStore(response.publicKey.toString());
+
+    const encodedMessage = new TextEncoder().encode(authState.nonce);
+    const signedMessage = await window.solana.signMessage(
+      encodedMessage,
+      "utf8",
+    );
+
+    dispatch(
+      signupWithPhantom({
+        username,
+        wallet_type: "phantom",
+        public_key: response.publicKey.toString(),
+        signature: signedMessage,
+        nonce: authState.nonce,
+      }),
+    );
   };
 
   return (
@@ -68,7 +96,7 @@ const CreatingAccountPhases = () => {
                     : "bg-transparent text-gray-300 mr-2"
                 }
               >
-                Metamask
+                Wallet
               </Tab>
               <Tab
                 className={({ selected }) =>
@@ -83,21 +111,102 @@ const CreatingAccountPhases = () => {
             <Tab.Panels>
               <Tab.Panel className="text-white">
                 <div className="px-2">
-                  <div className="flex items-center text-base">
-                    <div className="mr-auto">Connect your MetaMask wallet</div>
-                    <Button onClick={() => connectAccount()}>Connect</Button>
-                  </div>
-                  <div className="w-full h-px bg-gray-700 mt-8 mb-8" />
+                  {/*<div className="flex items-center text-base">*/}
+                  {/*  <div className="mr-auto">Connect your MetaMask wallet</div>*/}
+                  {/*  <Button*/}
+                  {/*    onClick={() => {*/}
+                  {/*      !authState.token && connectAccount();*/}
+                  {/*    }}*/}
+                  {/*  >*/}
+                  {/*    {authState.token ? "Connected" : "Connect"}*/}
+                  {/*  </Button>*/}
+                  {/*</div>*/}
+                  {/*<div className="w-full h-px bg-gray-700 mt-8 mb-8" />*/}
                   <div className="text-base mb-6">
                     Choose a username for your account
                   </div>
-                  <Input className="mb-10" />
-                  <Button onClick={() => console.warn("QQ")} block>
-                    Create Account
+                  <p className="text-sm text-gray-400 mb-6">
+                    http://secretnetwork.com/{username}
+                  </p>
+                  <Input
+                    className="mb-10"
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                  <div className="text-base mb-6">Select Network Type:</div>
+                  <div className="flex my-6">
+                    <div className="flex flex-col items-center mr-10">
+                      <Solana width={50} height={50} />
+                      <div
+                        className="text-white text-sm rounded py-1 px-3 mt-2"
+                        style={{ backgroundColor: "#17191d" }}
+                      >
+                        Solana
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <EthereumIcon width={50} height={50} />
+                      <div
+                        className="text-white text-sm rounded py-1 px-3 mt-2"
+                        style={{ backgroundColor: "#17191d" }}
+                      >
+                        Ethereum
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mb-8">
+                    {authState.errors &&
+                      authState.errors.map((error, index) => (
+                        <p
+                          className="flex items-center text-sm text-red-400 mb-3"
+                          key={index}
+                        >
+                          <XMark width={30} height={30} />
+                          {error.message}
+                        </p>
+                      ))}
+                  </div>
+                  <Button
+                    onClick={() => {
+                      !authState.token && connectAccount();
+                    }}
+                    disabled={username.length < 3}
+                    block
+                  >
+                    Connect wallet and create account
                   </Button>
                 </div>
               </Tab.Panel>
-              <Tab.Panel className="text-white">email password way</Tab.Panel>
+              <Tab.Panel className="text-white">
+                <div className="text-base mb-6">
+                  Choose a username for your account
+                </div>
+                <p className="text-sm text-gray-400 mb-6">
+                  http://secretnetwork.com/{username}
+                </p>
+                <Input
+                  className="mb-10"
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                <div className="text-base mb-6">Email:</div>
+                <Input
+                  className="mb-10"
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                <div className="text-base mb-6">Password:</div>
+                <Input
+                  className="mb-10"
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                <Button
+                  onClick={() => {
+                    !authState.token && connectAccount();
+                  }}
+                  disabled={username.length < 3}
+                  block
+                >
+                  Create account
+                </Button>
+              </Tab.Panel>
             </Tab.Panels>
           </Tab.Group>
         </div>
