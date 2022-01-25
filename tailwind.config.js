@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        yellowAccent: "#ffe91c",
+        greenAccent: "#3edc85",
+      },
       fontFamily: {
         sans: ["Inter"],
         serif: ["Inter"],
