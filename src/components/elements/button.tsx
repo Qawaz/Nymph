@@ -4,12 +4,16 @@ type ButtonProps = {
   block?: boolean;
   disabled?: boolean;
   onClick: () => void | Promise<any>;
+  tailwindColorClass?: string;
+  tailwindTextColorClass?: string;
 };
 
 const Button: FunctionComponent<ButtonProps> = ({
   children,
   onClick,
   disabled,
+  tailwindColorClass,
+  tailwindTextColorClass,
   block,
   ...props
 }) => (
@@ -17,24 +21,13 @@ const Button: FunctionComponent<ButtonProps> = ({
     <button
       className={`${
         block && "w-full"
-      } font-medium text-base text-gray-800 rounded-full px-4 py-2`}
+      } ${tailwindColorClass} ${tailwindTextColorClass} font-medium text-base text-white disabled:cursor-not-allowed rounded-md px-4 py-4`}
       onClick={onClick}
       disabled={disabled}
       {...props}
     >
       {children}
     </button>
-    <style jsx>
-      {`
-        button {
-          background: #01ffb9;
-        }
-        button:disabled {
-          cursor: not-allowed;
-          background: rgba(1, 285, 185, 0.5);
-        }
-      `}
-    </style>
   </>
 );
 
