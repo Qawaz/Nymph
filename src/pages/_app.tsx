@@ -18,7 +18,7 @@ export default function WhispersW3({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
             <style jsx>{`
               .whispers-w3 {
-                background: #1f2228;
+                background: rgb(40, 42, 54);
               }
             `}</style>
           </div>
