@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         yellowAccent: "#ffe91c",
         greenAccent: "#3edc85",
+        "blue-accent": "#285bf4",
       },
       fontFamily: {
         sans: ["Inter"],
