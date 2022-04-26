@@ -42,7 +42,7 @@ const Index = () => {
                     paddingTop: 15,
                     paddingBottom: 15,
                   }}
-                  onClick={() => router.push("/auth")}
+                  onClick={() => router.push("/join")}
                 >
                   Join Community
                 </Button>
