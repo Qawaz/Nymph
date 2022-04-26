@@ -56,19 +56,26 @@ const CreatingAccountPhases = () => {
                   <Input
                     error={errors.username ? true : false}
                     placeholder="SecretKeeper"
-                    {...register("username", { minLength: 3 })}
+                    {...register("username", {
+                      required: {
+                        value: true,
+                        message: "This field is required.",
+                      },
+                      minLength: {
+                        value: 3,
+                        message: "Username must be at least 3 charactars.",
+                      },
+                    })}
                   />
+                  {errors.username && (
+                    <p className="text-sm text-red-400 mt-3">
+                      <XMark width={30} height={30} />
+                      {errors.username.message}
+                    </p>
+                  )}
                 </div>
                 <div>
-                  <div className="text-base text-gray-400 mb-3">
-                    Email{" "}
-                    {errors.email && (
-                      <span className="text-red-500">
-                        {" "}
-                        - email is not valid
-                      </span>
-                    )}
-                  </div>
+                  <div className="text-base text-gray-400 mb-3">Email</div>
                   <Input
                     error={errors.email ? true : false}
                     placeholder="example@mail.com"
@@ -77,6 +84,12 @@ const CreatingAccountPhases = () => {
                         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                     })}
                   />
+                  {errors.email && (
+                    <p className="text-sm text-red-400 mt-3">
+                      <XMark width={30} height={30} />
+                      Invalid email address.
+                    </p>
+                  )}
                 </div>
                 <div className="col-span-2">
                   <div className="text-base text-gray-400 mb-3">Password</div>
@@ -84,8 +97,19 @@ const CreatingAccountPhases = () => {
                     type="password"
                     error={errors.password ? true : false}
                     placeholder="At least 8 chars"
-                    {...register("password", { minLength: 8 })}
+                    {...register("password", {
+                      minLength: {
+                        value: 8,
+                        message: "Password must be at least 8 characters",
+                      },
+                    })}
                   />
+                  {errors.password && (
+                    <p className="text-sm text-red-400 mt-3">
+                      <XMark width={30} height={30} />
+                      {errors.password.message}
+                    </p>
+                  )}
                 </div>
                 <div className="col-span-2">
                   <div className="text-base text-gray-400 mb-3">
@@ -96,17 +120,23 @@ const CreatingAccountPhases = () => {
                     error={errors["password-confirmation"] ? true : false}
                     placeholder="Confirm your password"
                     extraClassName="mb-5"
-                    {...register("password-confirmation", { minLength: 8 })}
+                    {...register("password-confirmation", {
+                      minLength: {
+                        value: 8,
+                        message: "Password must be at least 8 characters",
+                      },
+                    })}
                   />
+                  {watch("password-confirmation") !== "" &&
+                    watch("password-confirmation") !== watch("password") && (
+                      <p className="text-sm text-red-400 mt-3">
+                        <XMark width={30} height={30} />
+                        Password does not match
+                      </p>
+                    )}
                 </div>
               </div>
               <div className="mb-0">
-                {errors.username && (
-                  <p className="flex items-center text-sm text-red-400 mb-3">
-                    <XMark width={30} height={30} />
-                    Username validation failed
-                  </p>
-                )}
                 {authState.errors &&
                   authState.errors.map((error, index) => (
                     <p
@@ -132,7 +162,11 @@ const CreatingAccountPhases = () => {
                       Object.keys(errors).length === 0 &&
                       (watch("username") ? true : false) &&
                       (watch("email") ? true : false) &&
-                      (watch("password") ? true : false)
+                      (watch("password") ? true : false) &&
+                      (watch("password-confirmation") ? true : false) &&
+                      (watch("password-confirmation") === watch("password")
+                        ? true
+                        : false)
                         ? false
                         : true
                     }
