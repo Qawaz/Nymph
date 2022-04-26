@@ -1,38 +1,45 @@
 import React from "react";
 
-// eslint-disable-next-line react/display-name
-const Input = React.forwardRef<HTMLInputElement>((props, ref) => (
-  <>
-    <input className="input" {...props} ref={ref} />
-    <style jsx>
-      {`
-        input {
-          display: block;
-          padding: 0.7rem 0.8rem;
-          background: #17191d;
-          appearance: none;
-          width: 100%;
-          max-width: 100%;
-          box-sizing: border-box;
-          font-size: 1rem;
-          border-width: 1px;
-          border-style: solid;
-          border-color: rgba(15, 15, 15, 0.3);
-          border-radius: 2px;
-          outline: 0;
-          transition: all 200ms;
-        }
-        input:focus {
-          outline: 0;
-          border-color: rgba(15, 15, 15, 1);
-        }
+type Props = {
+  type?: string;
+  error?: boolean | undefined;
+  placeholder?: string;
+  extraClassName?: string;
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
+};
 
-        input:hover:not(:focus) {
-          border-color: transparent;
-        }
-      `}
-    </style>
-  </>
-));
+// eslint-disable-next-line react/display-name
+const Input = React.forwardRef<HTMLInputElement, Props>(
+  ({ error = false, extraClassName, placeholder, ...props }, ref) => (
+    <>
+      <input
+        className={`appearance-none input focus:border-yellowAccent outline-0 ${
+          error ? "border-red-500" : "border-gray-800"
+        } ${extraClassName}`}
+        placeholder={placeholder}
+        ref={ref}
+        {...props}
+      />
+      <style jsx>
+        {`
+          input {
+            display: block;
+            padding: 0.7rem 0.8rem;
+            background: rgb(51, 54, 67);
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            font-size: 1rem;
+            color: white;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 2px;
+            transition: all 200ms;
+          }
+        `}
+      </style>
+    </>
+  ),
+);
 
 export default Input;
