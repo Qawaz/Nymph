@@ -8,7 +8,7 @@ export interface AuthState {
   token: string;
   username: string;
   status: "idle" | "loading" | "failed";
-  errors: [object] | null;
+  errors: [{ message: string }] | null;
 }
 
 export interface SignUpPayload {
