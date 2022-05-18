@@ -5,7 +5,7 @@ type ButtonProps = {
   type?: "button" | "submit" | "reset" | undefined;
   block?: boolean;
   disabled?: boolean;
-  loading: boolean;
+  loading?: boolean;
   onClick?: () => void | Promise<any>;
   tailwindColorClass?: string;
   tailwindTextColorClass?: string;
