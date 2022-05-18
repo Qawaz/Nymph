@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from "react";
+import Spinner from "./spinner";
 
 type ButtonProps = {
   type?: "button" | "submit" | "reset" | undefined;
   block?: boolean;
   disabled?: boolean;
+  loading: boolean;
   onClick?: () => void | Promise<any>;
   tailwindColorClass?: string;
   tailwindTextColorClass?: string;
@@ -14,6 +16,7 @@ const Button: FunctionComponent<ButtonProps> = ({
   children,
   onClick,
   disabled,
+  loading,
   tailwindColorClass,
   tailwindTextColorClass,
   block,
@@ -31,7 +34,14 @@ const Button: FunctionComponent<ButtonProps> = ({
       disabled={disabled}
       {...props}
     >
-      {children}
+      {loading ? (
+        <div className="flex justify-center items-center">
+          <Spinner />
+          <span className="pl-3">Processing...</span>
+        </div>
+      ) : (
+        children
+      )}
     </button>
   </>
 );
