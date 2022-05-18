@@ -1,27 +1,20 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import {
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
+import { persistReducer } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import counterReducer from "@/redux/features/counter/counterSlice";
 import authReducer from "@/redux/features/auth/authSlice";
+import registerReducer from "@/redux/features/auth/registerSlice";
 
 const createNoopStorage = () => {
   return {
-    getItem(_key) {
+    getItem(_key: string) {
       return Promise.resolve(null);
     },
-    setItem(_key, value) {
+    setItem(_key: string, value: any) {
       return Promise.resolve(value);
     },
-    removeItem(_key) {
+    removeItem(_key: string) {
       return Promise.resolve();
     },
   };
@@ -42,6 +35,7 @@ export function makeStore() {
   const reducers = combineReducers({
     counter: counterReducer,
     auth: authReducer,
+    register: registerReducer,
   });
 
   const persistedReducer = persistReducer(persistConfig, reducers);
