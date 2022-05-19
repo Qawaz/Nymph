@@ -3,10 +3,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "@/components/elements/button";
 import Input from "@/components/elements/input";
 import { useAppDispatch, useAppSelector } from "@/redux/appHooks";
-import { AuthState, setAddress } from "@/redux/features/auth/authSlice";
 import XMark from "@/components/elements/xMark";
 import HeaderAuthForm from "@/components/auth/headerAuthForm";
 import BaseLayout from "@/components/layouts/baseLayout";
+import {
+  registerAccount,
+  RegisterState,
+} from "@/redux/features/auth/registerSlice";
+import { useRouter } from "next/router";
 
 type Inputs = {
   username: string;
@@ -25,23 +29,22 @@ const CreatingAccountPhases = () => {
 
   const dispatch = useAppDispatch();
 
-  const authState: AuthState = useAppSelector((state) => state.auth);
+  const router = useRouter();
 
-  const saveAddressToStore = (address: string) => dispatch(setAddress(address));
+  const registerState: RegisterState = useAppSelector(
+    (state) => state.register,
+  );
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.warn(data);
-
-    // dispatch(
-    //   signupWithPhantom({
-    //     username,
-    //     wallet_type: "phantom",
-    //     public_key: response.publicKey.toString(),
-    //     signature: signedMessage,
-    //     nonce: authState.nonce,
-    //   }),
-    // );
-  };
+  const onSubmit: SubmitHandler<Inputs> = (data) =>
+    dispatch(
+      registerAccount({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      }),
+    )
+      .unwrap()
+      .then(() => router.push("/"));
 
   return (
     <BaseLayout>
@@ -137,8 +140,8 @@ const CreatingAccountPhases = () => {
                 </div>
               </div>
               <div className="mb-0">
-                {authState.errors &&
-                  authState.errors.map((error, index) => (
+                {/* {registerState.errors &&
+                  registerState.errors.map((error, index: number) => (
                     <p
                       className="flex items-center text-sm text-red-400 mb-3"
                       key={index}
@@ -146,17 +149,21 @@ const CreatingAccountPhases = () => {
                       <XMark width={30} height={30} />
                       {error.message}
                     </p>
-                  ))}
+                  ))} */}
               </div>
               <Link href="/login" passHref>
                 <a className="block text-sm text-white mb-8">
                   Already a member? click to login
                 </a>
               </Link>
+              <div className="text-sm text-red-400 mb-5">
+                {registerState.errors}
+              </div>
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <Button
                     type="submit"
+                    state={registerState.status}
                     disabled={
                       errors &&
                       Object.keys(errors).length === 0 &&
@@ -176,7 +183,6 @@ const CreatingAccountPhases = () => {
                     Create Account
                   </Button>
                 </div>
-                {console.warn(errors)}
                 <div>
                   <Button tailwindColorClass="bg-gray-500" block>
                     Change Method
