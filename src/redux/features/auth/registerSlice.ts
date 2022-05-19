@@ -46,7 +46,7 @@ export const registerSlice = createSlice({
       .addCase(registerAccount.rejected, (state, action) => {
         state.status = "failed";
         console.warn(action);
-        state.errors = action.error.message;
+        state.errors = action.payload.data;
       });
   },
 });
