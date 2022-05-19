@@ -1,15 +1,9 @@
 {
-  "name": "typescript-nextjs-starter",
-  "description": "A TypeScript starter for Next.js that includes all you need to build amazing projects",
+  "name": "nymph",
+  "description": "Nymph represent user interface for registering in secret keeper's services stacks",
   "version": "1.0.0",
   "private": true,
-  "author": "João Pedro Schmitz <hey@joaopedro.dev> (@jpedroschmitz)",
-  "license": "MIT",
-  "keywords": [
-    "nextjs",
-    "starter",
-    "typescript"
-  ],
+  "author": "SecretKeeper",
   "scripts": {
     "dev": "next",
     "build": "next build",
