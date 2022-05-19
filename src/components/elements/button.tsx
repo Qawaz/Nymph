@@ -5,7 +5,7 @@ type ButtonProps = {
   type?: "button" | "submit" | "reset" | undefined;
   block?: boolean;
   disabled?: boolean;
-  loading?: boolean;
+  state?: "loading" | "success" | "idle" | "failed";
   onClick?: () => void | Promise<any>;
   tailwindColorClass?: string;
   tailwindTextColorClass?: string;
@@ -16,7 +16,7 @@ const Button: FunctionComponent<ButtonProps> = ({
   children,
   onClick,
   disabled,
-  loading,
+  state,
   tailwindColorClass,
   tailwindTextColorClass,
   block,
@@ -34,14 +34,33 @@ const Button: FunctionComponent<ButtonProps> = ({
       disabled={disabled}
       {...props}
     >
-      {loading ? (
-        <div className="flex justify-center items-center">
-          <Spinner />
-          <span className="pl-3">Processing...</span>
-        </div>
-      ) : (
-        children
-      )}
+      {(() => {
+        switch (state) {
+          case "loading":
+            return (
+              <div className="flex justify-center items-center">
+                <Spinner />
+                <span className="pl-3">Processing...</span>
+              </div>
+            );
+          case "success":
+            return (
+              <div className="flex justify-center items-center">
+                <span className="pl-3">Success</span>
+              </div>
+            );
+          case "failed":
+            return (
+              <div className="flex justify-center items-center">
+                <span className="pl-3">Failed</span>
+              </div>
+            );
+          case "idle":
+            return children;
+          default:
+            return children;
+        }
+      })()}
     </button>
   </>
 );
