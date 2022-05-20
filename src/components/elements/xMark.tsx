@@ -1,4 +1,15 @@
-const XMark = ({ width, height, ...props }) => (
+import { FunctionComponent } from "react";
+
+type Props = {
+  width?: number;
+  height?: number;
+};
+
+const XMark: FunctionComponent<Props> = ({
+  width,
+  height,
+  ...props
+}): JSX.Element => (
   <svg
     className="inline"
     width={width || 20}
