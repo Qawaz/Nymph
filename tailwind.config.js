@@ -13,9 +13,10 @@ module.exports = {
         "blue-accent": "#285bf4",
       },
       fontFamily: {
-        sans: ["Inter"],
-        serif: ["Inter"],
-        inter: ["Inter", ...defaultTheme.fontFamily.sans],
+        sans: ["Roboto"],
+        serif: ["Roboto"],
+        roboto: ["Roboto", ...defaultTheme.fontFamily.sans],
+        urbanist: ["Urbanist"],
       },
     },
   },
