@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        yellowAccent: "#ffe91c",
+        "yellow-accent": "#fae06a",
         greenAccent: "#3edc85",
         "blue-accent": "#285bf4",
       },
