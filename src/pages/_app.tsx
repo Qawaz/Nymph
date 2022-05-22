@@ -14,14 +14,7 @@ export default function WhispersW3({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <QueryClientProvider client={queryClient}>
-          <div className="whispers-w3">
-            <Component {...pageProps} />
-            <style jsx>{`
-              .whispers-w3 {
-                background: rgb(40, 42, 54);
-              }
-            `}</style>
-          </div>
+          <Component {...pageProps} />
         </QueryClientProvider>
       </PersistGate>
     </Provider>
