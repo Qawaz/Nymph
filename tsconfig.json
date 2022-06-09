@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/public/*": ["./public/*"]
+      "@/public/*": ["./public/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/redux/*": ["./src/redux/*"]
     },
     "incremental": true
   },
