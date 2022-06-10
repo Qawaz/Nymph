@@ -1,4 +1,3 @@
-import { FunctionComponent } from "react";
 import Image from "next/image";
 
 type Props = {
@@ -8,32 +7,27 @@ type Props = {
   date: string;
 };
 
-const Blog: FunctionComponent<Props> = ({
-  tag,
-  image_url,
-  title,
-  date,
-}): JSX.Element => (
+const Blog = (props: Props): JSX.Element => (
   <>
     <article>
       <div className="h-full cover absolute flex flex-col items-start py-6 px-5">
         <div className="flex-1">
           <div className="font-urbanist font-bold flex-1 bg-yellow-400 text-white text-sm left-5 px-4 py-1">
-            {tag}
+            {props.tag}
           </div>
         </div>
         <h3 className="font-urbanist text-2xl text-white font-bold pb-4">
-          {title}
+          {props.title}
         </h3>
         <time className="font-urbanist text-sm font-bold text-white">
-          {date}
+          {props.date}
         </time>
       </div>
       <Image
-        src={image_url}
+        src={props.image_url}
         width={400}
         height={500}
-        alt={title}
+        alt={props.title}
         layout="raw"
       />
     </article>
