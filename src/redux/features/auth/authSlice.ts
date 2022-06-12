@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import $axios from "@/utils/axios";
-import generateNonce from "@/utils/generateNonce";
+import $axios from "@/utilities/axios";
+import generateNonce from "@/utilities/generateNonce";
 
 export interface AuthState {
   nonce: string;

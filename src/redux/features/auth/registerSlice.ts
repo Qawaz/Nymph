@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import $axios from "@/utils/axios";
+import $axios from "@/utilities/axios";
 
 export interface RegisterState {
   status: "idle" | "loading" | "failed";
