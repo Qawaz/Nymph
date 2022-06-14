@@ -9,8 +9,9 @@ module.exports = {
     extend: {
       colors: {
         "yellow-accent": "#fae06a",
-        greenAccent: "#3edc85",
+        "green-accent": "#3edc85",
         "blue-accent": "#285bf4",
+        "blue-button": "#6ad9ea",
       },
       fontFamily: {
         sans: ["Roboto"],
