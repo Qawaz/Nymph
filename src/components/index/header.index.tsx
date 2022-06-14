@@ -35,7 +35,7 @@ const IndexHeader: FunctionComponent = (): JSX.Element => (
             <span className="pl-2">Create account with Ethereum or Solana</span>
           </li>
         </ul>
-        <Link href="/join">
+        <Link href="/register">
           <a className="items-center inline-flex justify-center align-middle bg-yellow-accent font-medium text-black text-sm rounded py-3 px-4">
             <span className="pr-3">Get Started</span> <Arrow />
           </a>
