@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { PropsWithChildren } from "react";
 import Spinner from "./spinner";
 
 type ButtonProps = {
@@ -11,7 +11,7 @@ type ButtonProps = {
   tailwindTextColorClass?: string;
 };
 
-const Button: FunctionComponent<ButtonProps> = ({
+const Button = ({
   type,
   children,
   onClick,
@@ -21,7 +21,7 @@ const Button: FunctionComponent<ButtonProps> = ({
   tailwindTextColorClass,
   block,
   ...props
-}) => (
+}: PropsWithChildren<ButtonProps>) => (
   <>
     <button
       type={type}
@@ -29,7 +29,7 @@ const Button: FunctionComponent<ButtonProps> = ({
         block && "w-full"
       } ${tailwindColorClass} ${tailwindTextColorClass} ${
         disabled && "opacity-50"
-      } font-medium text-base text-white disabled:cursor-not-allowed rounded-md px-4 py-4`}
+      } font-medium text-base text-white disabled:cursor-not-allowed rounded-sm px-4 py-4`}
       onClick={onClick}
       disabled={disabled}
       {...props}

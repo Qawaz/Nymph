@@ -2,7 +2,6 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
-import counterReducer from "@/redux/features/counter/counterSlice";
 import authReducer from "@/redux/features/auth/authSlice";
 import registerReducer from "@/redux/features/auth/registerSlice";
 
@@ -33,7 +32,6 @@ export function makeStore() {
   };
 
   const reducers = combineReducers({
-    counter: counterReducer,
     auth: authReducer,
     register: registerReducer,
   });
