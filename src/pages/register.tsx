@@ -1,8 +1,4 @@
 import BaseLayout from "@/components/layouts/baseLayout";
-import {
-  registerAccount,
-  RegisterState,
-} from "@/redux/features/auth/registerSlice";
 import StickyNavigation from "@/components/stickyNavigation";
 import RegisterHeaderForm from "@/components/auth/register/header.register";
 import RegisterForm from "@/components/auth/register/form.register";
