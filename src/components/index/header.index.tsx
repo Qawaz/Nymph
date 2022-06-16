@@ -1,8 +1,7 @@
 import { FunctionComponent } from "react";
 import Link from "next/link";
-import Checkmark from "@/components/elements/checkmark";
-import StickyNavigation from "../stickyNavigation";
-import Arrow from "../elements/arrow";
+import { Arrow, Checkmark } from "@/components/elements";
+import StickyNavigation from "@/components/stickyNavigation";
 
 const IndexHeader: FunctionComponent = (): JSX.Element => (
   <>
