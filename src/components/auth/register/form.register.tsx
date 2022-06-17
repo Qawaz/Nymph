@@ -59,28 +59,17 @@ const RegisterForm = (): JSX.Element => {
                 },
               })}
             />
-            {errors.username && (
-              <p className="text-sm text-red-400 mt-3">
-                <XMark width={30} height={30} />
-                {errors.username.message}
-              </p>
-            )}
           </div>
           <div className="mb-4">
             <Input
               error={errors.email ? true : false}
               placeholder="Email"
               {...register("email", {
+                required: true,
                 pattern:
                   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
               })}
             />
-            {errors.email && (
-              <p className="text-sm text-red-400 mt-3">
-                <XMark width={30} height={30} />
-                Invalid email address.
-              </p>
-            )}
           </div>
           <div className="">
             <Input
@@ -88,18 +77,19 @@ const RegisterForm = (): JSX.Element => {
               error={errors.password ? true : false}
               placeholder="Password"
               {...register("password", {
+                required: true,
                 minLength: {
                   value: 8,
                   message: "Password must be at least 8 characters",
                 },
               })}
             />
-            {errors.password && (
+            {/* {errors.password && (
               <p className="text-sm text-red-400 mt-3">
                 <XMark width={30} height={30} />
                 {errors.password.message}
               </p>
-            )}
+            )} */}
           </div>
         </div>
         <div className="mb-0">
@@ -114,19 +104,12 @@ const RegisterForm = (): JSX.Element => {
                     </p>
                   ))} */}
         </div>
-        <div className="text-sm text-red-400 mb-5">{registerState.errors}</div>
+        {/* <div className="text-sm text-red-400 mb-5">{registerState.errors}</div> */}
         <div>
           <Button
             type="submit"
             state={registerState.status}
-            disabled={
-              errors &&
-              Object.keys(errors).length === 0 &&
-              (watch("username") ? true : false) &&
-              (watch("email") ? true : false) &&
-              (watch("password") ? true : false)
-            }
-            tailwindColorClass="bg-blue-accent"
+            extraClasses="text-black bg-gradient-to-r from-[#02c399] via-[#02c399] to-yellow-accent"
             block
           >
             Create Account
