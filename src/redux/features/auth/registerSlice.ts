@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import $axios from "@/utilities/axios";
+import AxiosErrorHandler from "@/utilities/axiosErrorHandler";
+import { AxiosError } from "axios";
 
 export interface RegisterState {
   status: "idle" | "loading" | "failed";
@@ -36,7 +38,8 @@ export const registerAccount = createAsyncThunk<
     const response = await $axios.post("/auth/signup", payload);
     return response.data;
   } catch (err) {
-    return thunkAPI.rejectWithValue(err as any);
+    const error = err as Error | AxiosError;
+    return thunkAPI.rejectWithValue(AxiosErrorHandler(error));
   }
 });
 
