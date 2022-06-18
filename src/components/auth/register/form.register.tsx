@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "@/redux/appHooks";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Button, Input, XMark } from "@/components/elements";
+import { Button, Input } from "@/components/elements";
 import {
   registerAccount,
   RegisterState,
@@ -21,7 +21,6 @@ const RegisterForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>({ mode: "onBlur" });
 
@@ -59,28 +58,17 @@ const RegisterForm = (): JSX.Element => {
                 },
               })}
             />
-            {errors.username && (
-              <p className="text-sm text-red-400 mt-3">
-                <XMark width={30} height={30} />
-                {errors.username.message}
-              </p>
-            )}
           </div>
           <div className="mb-4">
             <Input
               error={errors.email ? true : false}
               placeholder="Email"
               {...register("email", {
+                required: true,
                 pattern:
                   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
               })}
             />
-            {errors.email && (
-              <p className="text-sm text-red-400 mt-3">
-                <XMark width={30} height={30} />
-                Invalid email address.
-              </p>
-            )}
           </div>
           <div className="">
             <Input
@@ -88,45 +76,21 @@ const RegisterForm = (): JSX.Element => {
               error={errors.password ? true : false}
               placeholder="Password"
               {...register("password", {
+                required: true,
                 minLength: {
                   value: 8,
                   message: "Password must be at least 8 characters",
                 },
               })}
             />
-            {errors.password && (
-              <p className="text-sm text-red-400 mt-3">
-                <XMark width={30} height={30} />
-                {errors.password.message}
-              </p>
-            )}
           </div>
         </div>
-        <div className="mb-0">
-          {/* {registerState.errors &&
-                  registerState.errors.map((error, index: number) => (
-                    <p
-                      className="flex items-center text-sm text-red-400 mb-3"
-                      key={index}
-                    >
-                      <XMark width={30} height={30} />
-                      {error.message}
-                    </p>
-                  ))} */}
-        </div>
-        <div className="text-sm text-red-400 mb-5">{registerState.errors}</div>
+        <div className="text-sm text-red-400 my-5">{registerState.errors}</div>
         <div>
           <Button
             type="submit"
             state={registerState.status}
-            disabled={
-              errors &&
-              Object.keys(errors).length === 0 &&
-              (watch("username") ? true : false) &&
-              (watch("email") ? true : false) &&
-              (watch("password") ? true : false)
-            }
-            tailwindColorClass="bg-blue-accent"
+            extraClasses="text-black bg-gradient-to-r from-[#02c399] via-[#02c399] to-yellow-accent"
             block
           >
             Create Account

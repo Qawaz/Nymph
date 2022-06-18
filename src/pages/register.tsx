@@ -8,8 +8,8 @@ const Register = () => {
     <BaseLayout>
       <StickyNavigation />
       <RegisterHeaderForm />
-      <div className="grid grid-cols-1 md:grid-cols-3 bg-dark-blur rounded-md mb-24">
-        <div className="w-full ml-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 bg-dark-blur rounded-md mb-24">
+        <div className="w-full border-r border-r-gray-800 px-32">
           <RegisterForm />
         </div>
       </div>

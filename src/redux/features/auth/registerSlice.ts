@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import $axios from "@/utilities/axios";
+import AxiosErrorHandler from "@/utilities/axiosErrorHandler";
+import { AxiosError } from "axios";
 
 export interface RegisterState {
   status: "idle" | "loading" | "failed";
@@ -12,22 +14,34 @@ export interface SignUpPayload {
   password: string;
 }
 
+type ServerResponse = {
+  user_id: number;
+  solana_pubkey: string | null;
+  ethereum_pubkey: string | null;
+  username: string;
+  email: string | null;
+  avatar: string | null;
+  created_at: string;
+};
+
 const initialState: RegisterState = {
   status: "idle",
   errors: "",
 };
 
-export const registerAccount = createAsyncThunk(
-  "auth/signup",
-  async (payload: SignUpPayload, thunkAPI) => {
-    try {
-      const response = await $axios.post("/auth/signup", payload);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue({ error: error.response.data });
-    }
-  },
-);
+export const registerAccount = createAsyncThunk<
+  ServerResponse,
+  SignUpPayload,
+  { rejectValue: string }
+>("auth/signup", async (payload: SignUpPayload, thunkAPI) => {
+  try {
+    const response = await $axios.post("/auth/signup", payload);
+    return response.data;
+  } catch (err) {
+    const error = err as Error | AxiosError;
+    return thunkAPI.rejectWithValue(AxiosErrorHandler(error));
+  }
+});
 
 export const registerSlice = createSlice({
   name: "register",
@@ -43,10 +57,9 @@ export const registerSlice = createSlice({
         state.status = "idle";
         console.warn(action);
       })
-      .addCase(registerAccount.rejected, (state, action) => {
+      .addCase(registerAccount.rejected, (state, { payload }) => {
         state.status = "failed";
-        console.warn(action);
-        state.errors = action.payload.data;
+        state.errors = payload;
       });
   },
 });

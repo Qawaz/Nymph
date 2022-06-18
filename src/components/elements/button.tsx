@@ -7,8 +7,7 @@ type ButtonProps = {
   disabled?: boolean;
   state?: "loading" | "success" | "idle" | "failed";
   onClick?: () => void | Promise<any>;
-  tailwindColorClass?: string;
-  tailwindTextColorClass?: string;
+  extraClasses: string;
 };
 
 const Button = ({
@@ -17,19 +16,16 @@ const Button = ({
   onClick,
   disabled,
   state,
-  tailwindColorClass,
-  tailwindTextColorClass,
+  extraClasses,
   block,
   ...props
 }: PropsWithChildren<ButtonProps>) => (
   <>
     <button
       type={type}
-      className={`${
-        block && "w-full"
-      } ${tailwindColorClass} ${tailwindTextColorClass} ${
-        disabled && "opacity-50"
-      } font-medium text-base text-white disabled:cursor-not-allowed rounded-sm px-4 py-4`}
+      className={`${block && "w-full"} ${
+        disabled && "opacity-75"
+      } font-medium text-base text-white disabled:cursor-not-allowed rounded-sm px-4 py-4 ${extraClasses}`}
       onClick={onClick}
       disabled={disabled}
       {...props}
