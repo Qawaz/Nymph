@@ -1,16 +1,41 @@
+import { useRouter } from "next/router";
+import { useAppDispatch } from "@/redux/appHooks";
+import { SubmitHandler } from "react-hook-form";
 import BaseLayout from "@/components/layouts/baseLayout";
 import StickyNavigation from "@/components/stickyNavigation";
 import RegisterHeaderForm from "@/components/auth/register/header.register";
 import RegisterForm from "@/components/auth/register/form.register";
+import { registerAccount } from "@/redux/features/auth/registerSlice";
+
+export type Inputs = {
+  username: string;
+  email: string;
+  password: string;
+};
 
 const Register = () => {
+  const router = useRouter();
+
+  const dispatch = useAppDispatch();
+
+  const onSubmit: SubmitHandler<Inputs> = (data) =>
+    dispatch(
+      registerAccount({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      }),
+    )
+      .unwrap()
+      .then(() => router.push("/"));
+
   return (
     <BaseLayout>
       <StickyNavigation />
       <RegisterHeaderForm />
       <div className="grid grid-cols-1 md:grid-cols-2 bg-dark-blur rounded-md mb-24">
         <div className="w-full border-r border-r-gray-800 px-32">
-          <RegisterForm />
+          <RegisterForm onSubmit={onSubmit} />
         </div>
       </div>
       <div className="text-white text-center text-lg pb-16">
