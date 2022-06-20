@@ -1,4 +1,5 @@
-import { act, render, fireEvent, getByTestId } from "@testing-library/react";
+import { faker } from "@faker-js/faker";
+import { act, render, fireEvent } from "@testing-library/react";
 import RegisterForm from "@/components/auth/register/form.register";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
@@ -15,13 +16,13 @@ describe("Register Form", () => {
 
     await act(async () => {
       fireEvent.change(getByPlaceholderText("Username"), {
-        target: { value: "emwwe" },
+        target: { value: faker.internet.userName() },
       });
       fireEvent.change(getByPlaceholderText("Email"), {
-        target: { value: "1234567@gmail.com" },
+        target: { value: faker.internet.email() },
       });
       fireEvent.change(getByPlaceholderText("Password"), {
-        target: { value: "1234567we" },
+        target: { value: faker.internet.password(15) },
       });
     });
 
@@ -44,7 +45,7 @@ describe("Register Form", () => {
 
       await act(async () => {
         fireEvent.change(emailInput, {
-          target: { value: "wewrwq" },
+          target: { value: "invalid_email" },
         });
         fireEvent.focusOut(emailInput);
       });
@@ -65,7 +66,7 @@ describe("Register Form", () => {
 
       await act(async () => {
         fireEvent.change(usernameInput, {
-          target: { value: "ww" }, // username min length is equal 3
+          target: { value: "qq" }, // username min length is equal 3
         });
         fireEvent.focusOut(usernameInput);
       });
