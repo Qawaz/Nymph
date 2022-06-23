@@ -1,23 +1,14 @@
-import { useRouter } from "next/router";
-import { useAppDispatch, useAppSelector } from "@/redux/appHooks";
+import { useAppSelector } from "@/redux/appHooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Button, Input } from "@/components/elements";
-import {
-  registerAccount,
-  RegisterState,
-} from "@/redux/features/auth/registerSlice";
+import { RegisterState } from "@/redux/features/auth/registerSlice";
+import { Inputs } from "@/pages/register";
 
-type Inputs = {
-  username: string;
-  email: string;
-  password: string;
+type Props = {
+  onSubmit: SubmitHandler<Inputs>;
 };
 
-const RegisterForm = (): JSX.Element => {
-  const router = useRouter();
-
-  const dispatch = useAppDispatch();
-
+const RegisterForm = ({ onSubmit }: Props): JSX.Element => {
   const {
     register,
     handleSubmit,
@@ -27,17 +18,6 @@ const RegisterForm = (): JSX.Element => {
   const registerState: RegisterState = useAppSelector(
     (state) => state.register,
   );
-
-  const onSubmit: SubmitHandler<Inputs> = (data) =>
-    dispatch(
-      registerAccount({
-        username: data.username,
-        email: data.email,
-        password: data.password,
-      }),
-    )
-      .unwrap()
-      .then(() => router.push("/"));
 
   return (
     <div className="px-2 outline-none">
