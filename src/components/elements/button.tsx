@@ -7,7 +7,7 @@ type ButtonProps = {
   disabled?: boolean;
   state?: "loading" | "success" | "idle" | "failed";
   onClick?: () => void | Promise<any>;
-  extraClasses: string;
+  extraClasses?: string;
 };
 
 const Button = ({
@@ -42,7 +42,8 @@ const Button = ({
           case "success":
             return (
               <div className="flex justify-center items-center">
-                <span className="pl-3">Success</span>
+                <Spinner />
+                <span className="pl-3">Successful, Redirecting...</span>
               </div>
             );
           case "failed":
