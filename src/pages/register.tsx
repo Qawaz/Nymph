@@ -2,11 +2,11 @@ import { useRouter } from "next/router";
 import { useAppDispatch } from "@/redux/appHooks";
 import { SubmitHandler } from "react-hook-form";
 import BaseLayout from "@/components/layouts/baseLayout";
-import StickyNavigation from "@/components/stickyNavigation";
 import RegisterHeaderForm from "@/components/auth/register/header.register";
 import RegisterForm from "@/components/auth/register/form.register";
 import { registerAccount } from "@/redux/features/auth/registerSlice";
 import SocialSignIn from "@/components/auth/register/socialSignIn.register";
+import Link from "next/link";
 
 export type Inputs = {
   username: string;
@@ -32,7 +32,6 @@ const Register = () => {
 
   return (
     <BaseLayout>
-      <StickyNavigation />
       <RegisterHeaderForm />
       <div className="grid grid-cols-1 md:grid-cols-2 bg-dark-blur rounded-md mb-24">
         <div className="w-full border-r border-r-gray-800 px-32">
@@ -43,7 +42,7 @@ const Register = () => {
         </div>
       </div>
       <div className="text-white text-center text-lg pb-16">
-        Forgot Password?
+        <Link href="/login">Already have an account? Login here</Link>
       </div>
       <div className="flex py-10">
         <div className="text-gray-400 text-center">Privacy Policy</div>
