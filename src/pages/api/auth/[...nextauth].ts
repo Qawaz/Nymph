@@ -70,6 +70,7 @@ const providers = [
 ];
 
 const callbacks = {
+  redirect: async ({ url }) => (url.endsWith("/login") ? "/dashboard" : "/"),
   jwt: async ({ token, user }) => {
     if (user) {
       // This will only be executed at login. Each next invocation will skip this part.
