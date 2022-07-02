@@ -6,6 +6,7 @@ import StickyNavigation from "@/components/stickyNavigation";
 import RegisterHeaderForm from "@/components/auth/register/header.register";
 import RegisterForm from "@/components/auth/register/form.register";
 import { registerAccount } from "@/redux/features/auth/registerSlice";
+import SocialSignIn from "@/components/auth/register/socialSignIn.register";
 
 export type Inputs = {
   username: string;
@@ -36,6 +37,9 @@ const Register = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 bg-dark-blur rounded-md mb-24">
         <div className="w-full border-r border-r-gray-800 px-32">
           <RegisterForm onSubmit={onSubmit} />
+        </div>
+        <div className="px-32">
+          <SocialSignIn />
         </div>
       </div>
       <div className="text-white text-center text-lg pb-16">
