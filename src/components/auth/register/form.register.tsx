@@ -70,7 +70,7 @@ const RegisterForm = ({ onSubmit }: Props): JSX.Element => {
           <Button
             type="submit"
             state={registerState.status}
-            extraClasses="text-black bg-gradient-to-r from-[#02c399] via-[#02c399] to-yellow-accent"
+            extraClasses="text-black font-semibold bg-gradient-to-r from-[#02c399] via-[#02c399] to-yellow-accent"
             block
           >
             Create Account
