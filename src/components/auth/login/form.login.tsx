@@ -4,9 +4,10 @@ import { Inputs } from "@/pages/login";
 
 type Props = {
   onSubmit: SubmitHandler<Inputs>;
+  error: string;
 };
 
-const LoginForm = ({ onSubmit }: Props): JSX.Element => {
+const LoginForm = ({ onSubmit, error }: Props): JSX.Element => {
   const {
     register,
     handleSubmit,
@@ -33,7 +34,7 @@ const LoginForm = ({ onSubmit }: Props): JSX.Element => {
               })}
             />
           </div>
-          <div className="">
+          <div className="mb-4">
             <Input
               type="password"
               error={errors.password ? true : false}
@@ -48,6 +49,7 @@ const LoginForm = ({ onSubmit }: Props): JSX.Element => {
             />
           </div>
         </div>
+        {error && <div className="text-red-500 mb-3">{error}</div>}
         <div>
           <Button
             type="submit"
