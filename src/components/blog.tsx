@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 
 type Props = {
   tag: string;
@@ -23,13 +23,7 @@ const Blog = (props: Props): JSX.Element => (
           {props.date}
         </time>
       </div>
-      <Image
-        src={props.image_url}
-        width={400}
-        height={500}
-        alt={props.title}
-        layout="raw"
-      />
+      <Image src={props.image_url} width={400} height={500} alt={props.title} />
     </article>
     <style jsx>
       {`
