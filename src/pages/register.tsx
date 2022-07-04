@@ -41,7 +41,7 @@ const Register = () => {
           <SocialSignIn />
         </div>
       </div>
-      <div className="text-white text-center text-lg pb-16">
+      <div className="text-gray-300 text-center text-base pb-16">
         <Link href="/login">Already have an account? Login here</Link>
       </div>
       <div className="flex py-10">
