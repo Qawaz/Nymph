@@ -1,6 +1,8 @@
 import { useSession } from "next-auth/react";
 import { ReactNode } from "react";
 import Unauthorized from "@/components/unauthorized";
+import Nav from "@/components/layouts/nav";
+import MessengerSidebar from "./messengerSidebar";
 
 type Props = {
   children: ReactNode;
@@ -15,13 +17,15 @@ const DashboardLayout = ({ children }: Props): JSX.Element => {
 
   return (
     <>
-      <main className="flex justify-center">
+      <main className="flex">
+        <Nav />
+        <MessengerSidebar />
         <div className="container">{children}</div>
       </main>
       <style jsx>
         {`
           main {
-            background-color: #131417;
+            background-image: url("/dashboard-background.svg");
           }
         `}
       </style>
