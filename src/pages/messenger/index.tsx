@@ -1,6 +1,8 @@
 import { createContext, Dispatch, SetStateAction, useState } from "react";
 import DashboardLayout from "@/components/layouts/dashboard";
+import Messages from "@/components/containers/messages";
 import { signOut } from "next-auth/react";
+import MessagesDetails from "@/components/messages/messagesDetails";
 
 type ConversationType = {
   type: "conversation" | "channels" | "group" | "guild";
@@ -30,12 +32,12 @@ const Dashboard = () => {
       value={{ activeConversation: activeConversation, setActiveConversation }}
     >
       <DashboardLayout>
-        <div
+        {/* <div
           className="text-white"
           //  onClick={() => signOut({ callbackUrl: "/" })}
-        >
-          {activeConversation.id}
-        </div>
+        ></div> */}
+        <Messages />
+        <MessagesDetails />
       </DashboardLayout>
     </MessengerContext.Provider>
   );
