@@ -10,7 +10,7 @@ const MessagesFooter = (): JSX.Element => {
 
   const onSubmit: SubmitHandler<Input> = (data) => console.log(data);
   return (
-    <div className="flex items-center px-8 mb-4">
+    <div className="w-full flex bg-transparent items-center px-8 mb-4">
       <form
         className="flex flex-grow items-center rounded bg-[#fff]/10 pr-4"
         onSubmit={handleSubmit(onSubmit)}

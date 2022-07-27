@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const MessagesHeader = (): JSX.Element => (
-  <div className="flex items-center bg-gradient-to-r from-[#302e30] to-[#302e2d] h-20 px-8">
+  <div className="flex items-center backdrop-blur h-16 px-8">
     <Image
       src={"https://avatarfiles.alphacoders.com/217/217821.png"}
       alt={"username"}
