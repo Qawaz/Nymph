@@ -1,5 +1,5 @@
-import { MessengerContext } from "@/pages/messenger";
 import Image from "next/image";
+import { MessengerContext } from "@/pages/messenger";
 import { useContext } from "react";
 
 export type Conversation = {
