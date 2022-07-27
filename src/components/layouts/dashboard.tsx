@@ -17,18 +17,11 @@ const DashboardLayout = ({ children }: Props): JSX.Element => {
 
   return (
     <>
-      <main className="flex">
+      <main className="flex bg-gradient-to-b from-[#3b3132] to-[#271b25]">
         <Nav />
         <MessengerSidebar />
-        <div className="container">{children}</div>
+        {children}
       </main>
-      <style jsx>
-        {`
-          main {
-            background-image: url("/dashboard-background.svg");
-          }
-        `}
-      </style>
     </>
   );
 };

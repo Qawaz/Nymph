@@ -3,7 +3,7 @@ import { SettingsIcon } from "../icons";
 
 const Nav = () => {
   return (
-    <div className="flex flex-col text-white w-20 bg-gradient-to-b from-[#3b3132] to-[#271b25]">
+    <div className="flex flex-col text-white w-20">
       <div className="flex-grow">Whisper</div>
       <div className="flex flex-col justify-center items-center pb-5">
         <div className="hover:cursor-pointer mb-5">
