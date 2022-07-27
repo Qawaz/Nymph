@@ -26,7 +26,7 @@ const ConversationNotes = (): JSX.Element => {
           />
         </form>
       ) : (
-        <div className="text-gray-200" onClick={toggleEditMode}>
+        <div className="text-gray-200 text-sm" onClick={toggleEditMode}>
           My notes comes here
         </div>
       )}
