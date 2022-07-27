@@ -1,6 +1,6 @@
+import { useContext } from "react";
 import Image from "next/image";
 import { MessengerContext } from "@/pages/messenger";
-import { useContext } from "react";
 
 export type Conversation = {
   id: number;
