@@ -4,7 +4,7 @@ import $axios from "@/utilities/axios";
 import { AxiosError } from "axios";
 
 type Credentials = {
-  username: string;
+  username_or_email: string;
   password: string;
 };
 
@@ -46,14 +46,14 @@ const providers = [
   CredentialsProvider({
     name: "Credentials",
     credentials: {
-      username: { label: "Username", type: "text" },
+      username_or_email: { label: "Username or Email", type: "text" },
       password: { label: "Password", type: "password" },
     },
     async authorize(credentials: Credentials): Promise<UserResponse | null> {
       try {
         const { data } = await $axios.post<UserResponse>("/auth/signin", {
+          username_or_email: credentials.username_or_email,
           password: credentials.password,
-          username: credentials.username,
         });
 
         if (data.access_token) {
@@ -105,6 +105,7 @@ const callbacks = {
 export const options = {
   providers,
   callbacks,
+  debug: true,
   pages: {},
   secret: "your_secret",
 };

@@ -1,48 +1,47 @@
-import { useRouter } from "next/router";
-import { useAppDispatch } from "@/redux/appHooks";
 import { SubmitHandler } from "react-hook-form";
 import BaseLayout from "@/components/layouts/baseLayout";
-import RegisterHeaderForm from "@/components/auth/register/header.register";
-import RegisterForm from "@/components/auth/register/form.register";
-import { registerAccount } from "@/redux/features/auth/registerSlice";
 import SocialSignIn from "@/components/auth/register/socialSignIn.register";
-import Link from "next/link";
+import LoginForm from "@/components/auth/login/form.login";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import LoginHeaderForm from "@/components/auth/login/header.login";
 
 export type Inputs = {
-  username: string;
-  email: string;
+  username_or_email: string;
   password: string;
 };
 
 const Register = () => {
   const router = useRouter();
 
-  const dispatch = useAppDispatch();
+  const [error, setError] = useState("");
 
-  const onSubmit: SubmitHandler<Inputs> = (data) =>
-    dispatch(
-      registerAccount({
-        username: data.username,
-        email: data.email,
-        password: data.password,
-      }),
-    )
-      .unwrap()
-      .then(() => router.push("/"));
+  const onSubmit: SubmitHandler<Inputs> = async (data) =>
+    await signIn("credentials", {
+      ...data,
+      redirect: false,
+    }).then((response) => {
+      response?.status === 200
+        ? router.push("/dashboard")
+        : setError(response?.error || "");
+
+      return false;
+    });
 
   return (
     <BaseLayout>
-      <RegisterHeaderForm />
+      <LoginHeaderForm />
       <div className="grid grid-cols-1 md:grid-cols-2 bg-dark-blur rounded-md mb-24">
         <div className="w-full border-r border-r-gray-800 px-32">
-          <RegisterForm onSubmit={onSubmit} />
+          <LoginForm onSubmit={onSubmit} error={error} />
         </div>
         <div className="px-32">
           <SocialSignIn />
         </div>
       </div>
       <div className="text-gray-300 text-center text-base pb-16">
-        <Link href="/login">Already have an account? Login here</Link>
+        Forgot Password?
       </div>
       <div className="flex py-10">
         <div className="text-gray-400 text-center">Privacy Policy</div>

@@ -3,11 +3,15 @@ import { FunctionComponent } from "react";
 type Props = {
   width?: number;
   height?: number;
+  color?: string;
+  extraClasses?: string;
 };
 
 const Arrow: FunctionComponent<Props> = ({
   width = 20,
   height = 20,
+  color,
+  extraClasses,
 }): JSX.Element => (
   <svg
     version="1.1"
@@ -19,6 +23,8 @@ const Arrow: FunctionComponent<Props> = ({
     xmlSpace="preserve"
     width={width}
     height={height}
+    fill={color}
+    className={extraClasses}
   >
     <g>
       <g>

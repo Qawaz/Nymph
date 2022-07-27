@@ -1,23 +1,18 @@
-import { useAppSelector } from "@/redux/appHooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Button, Input } from "@/components/elements";
-import { RegisterState } from "@/redux/features/auth/registerSlice";
-import { Inputs } from "@/pages/register";
+import { Inputs } from "@/pages/login";
 
 type Props = {
   onSubmit: SubmitHandler<Inputs>;
+  error: string;
 };
 
-const RegisterForm = ({ onSubmit }: Props): JSX.Element => {
+const LoginForm = ({ onSubmit, error }: Props): JSX.Element => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({ mode: "onBlur" });
-
-  const registerState: RegisterState = useAppSelector(
-    (state) => state.register,
-  );
 
   return (
     <div className="px-2 outline-none">
@@ -25,32 +20,21 @@ const RegisterForm = ({ onSubmit }: Props): JSX.Element => {
         <div className="">
           <div className="mb-4">
             <Input
-              error={errors.username ? true : false}
-              placeholder="Username"
-              {...register("username", {
+              error={errors.username_or_email ? true : false}
+              placeholder="Username or Email"
+              {...register("username_or_email", {
                 required: {
                   value: true,
                   message: "This field is required.",
                 },
                 minLength: {
                   value: 3,
-                  message: "Username must be at least 3 charactars.",
+                  message: "This field must be at least 3 charactars.",
                 },
               })}
             />
           </div>
           <div className="mb-4">
-            <Input
-              error={errors.email ? true : false}
-              placeholder="Email"
-              {...register("email", {
-                required: true,
-                pattern:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              })}
-            />
-          </div>
-          <div className="">
             <Input
               type="password"
               error={errors.password ? true : false}
@@ -65,15 +49,14 @@ const RegisterForm = ({ onSubmit }: Props): JSX.Element => {
             />
           </div>
         </div>
-        <div className="text-sm text-red-400 my-5">{registerState.errors}</div>
+        {error && <div className="text-red-500 mb-3">{error}</div>}
         <div>
           <Button
             type="submit"
-            state={registerState.status}
             extraClasses="text-black font-semibold bg-gradient-to-r from-[#02c399] via-[#02c399] to-yellow-accent"
             block
           >
-            Create Account
+            Login
           </Button>
         </div>
       </form>
@@ -81,4 +64,4 @@ const RegisterForm = ({ onSubmit }: Props): JSX.Element => {
   );
 };
 
-export default RegisterForm;
+export default LoginForm;

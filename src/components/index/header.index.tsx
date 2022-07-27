@@ -1,11 +1,8 @@
-import { FunctionComponent } from "react";
 import Link from "next/link";
 import { Arrow, Checkmark } from "@/components/elements";
-import StickyNavigation from "@/components/stickyNavigation";
 
-const IndexHeader: FunctionComponent = (): JSX.Element => (
+const IndexHeader = (): JSX.Element => (
   <>
-    <StickyNavigation />
     <header>
       <div className="container mx-auto py-10">
         <div className="py-24">
