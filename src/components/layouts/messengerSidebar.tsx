@@ -21,7 +21,7 @@ const shortcuts = [
 
 const MessengerSidebar = () => {
   return (
-    <div className="text-white w-[300px] overflow-y-scroll max-h-screen py-4">
+    <div className="text-white w-[300px] flex-shrink-0 overflow-y-scroll max-h-screen py-4">
       <MessageSidebarSearch />
       <div className="px-4 mt-2 ">
         {shortcuts.map((shortcut, index) => (
