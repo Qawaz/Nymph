@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { Switch } from "@headlessui/react";
-import { useState } from "react";
 import SharedMedia from "./sharedMedia";
 import Guild from "./guild";
 import ConversationNotification from "./conversationNotification";
