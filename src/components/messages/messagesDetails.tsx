@@ -6,7 +6,7 @@ import ConversationNotes from "./conversationNotes";
 
 const MessagesDetails = (): JSX.Element => {
   return (
-    <div className="w-[300px] overflow-y-scroll max-h-screen px-4 py-10">
+    <div className="w-[300px] flex-shrink-0 overflow-y-scroll max-h-screen px-4 py-10">
       <div className="text-center">
         <Image
           src={"https://avatarfiles.alphacoders.com/217/217821.png"}
@@ -27,14 +27,8 @@ const MessagesDetails = (): JSX.Element => {
       </h3>
       <p className="text-gray-500 text-sm">
         Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
+        industry. Lorem Ipsum has been the industry standard dummy text ever
+        since the 1500s.
       </p>
       <ConversationNotification />
       <Guild />
