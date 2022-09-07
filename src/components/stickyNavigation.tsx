@@ -4,7 +4,7 @@ import Arrow from "./elements/arrow";
 
 const StickyNavigation: FunctionComponent = (): JSX.Element => (
   <>
-    <nav className="sticky top-0 w-full backdrop-blur border-b  border-solid border-slate-800 max-w-screen-2xl">
+    <nav className="sticky top-0 w-full backdrop-blur border-b border-solid border-slate-800 max-w-screen">
       <div className="container flex flex-row align-middle items-center mx-auto py-5">
         <div className="font-medium text-white text-lg">
           <Link href="/">Whispers</Link>
