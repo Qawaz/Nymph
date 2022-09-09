@@ -4,9 +4,4 @@ module.exports = {
   images: {
     domains: ["images.unsplash.com", "avatarfiles.alphacoders.com"],
   },
-  experimental: {
-    images: {
-      allowFutureImage: true,
-    },
-  },
 };
