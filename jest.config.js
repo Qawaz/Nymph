@@ -14,7 +14,7 @@ const customJestConfig = {
 
     "^@/pages/(.*)$": "<rootDir>/pages/$1",
 
-    "^@/redux/(.*)$": "<rootDir>/src/redux/$1",
+    "^@/zustand/(.*)$": "<rootDir>/src/zustand/$1",
 
     "^@/utilities/(.*)$": "<rootDir>/src/utilities/$1",
   },

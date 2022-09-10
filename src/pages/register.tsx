@@ -1,10 +1,8 @@
 import { useRouter } from "next/router";
-import { useAppDispatch } from "@/redux/appHooks";
 import { SubmitHandler } from "react-hook-form";
 import BaseLayout from "@/components/layouts/baseLayout";
 import RegisterHeaderForm from "@/components/auth/register/header.register";
 import RegisterForm from "@/components/auth/register/form.register";
-import { registerAccount } from "@/redux/features/auth/registerSlice";
 import SocialSignIn from "@/components/auth/register/socialSignIn.register";
 import Link from "next/link";
 
@@ -17,18 +15,18 @@ export type Inputs = {
 const Register = () => {
   const router = useRouter();
 
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) =>
-    dispatch(
-      registerAccount({
-        username: data.username,
-        email: data.email,
-        password: data.password,
-      }),
-    )
-      .unwrap()
-      .then(() => router.push("/"));
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.warn(data);
+  // dispatch(
+  //   registerAccount({
+  //     username: data.username,
+  //     email: data.email,
+  //     password: data.password,
+  //   }),
+  // )
+  //   .unwrap()
+  //   .then(() => router.push("/"));
 
   return (
     <BaseLayout>

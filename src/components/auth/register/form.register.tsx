@@ -1,7 +1,5 @@
-import { useAppSelector } from "@/redux/appHooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Button, Input } from "@/components/elements";
-import { RegisterState } from "@/redux/features/auth/registerSlice";
 import { Inputs } from "@/pages/register";
 
 type Props = {
@@ -14,10 +12,6 @@ const RegisterForm = ({ onSubmit }: Props): JSX.Element => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({ mode: "onBlur" });
-
-  const registerState: RegisterState = useAppSelector(
-    (state) => state.register,
-  );
 
   return (
     <div className="px-2 outline-none">
@@ -65,11 +59,12 @@ const RegisterForm = ({ onSubmit }: Props): JSX.Element => {
             />
           </div>
         </div>
-        <div className="text-sm text-red-400 my-5">{registerState.errors}</div>
+        {/* Not available after moving to zustand */}
+        {/* <div className="text-sm text-red-400 my-5">{registerState.errors}</div> */}
         <div>
           <Button
             type="submit"
-            state={registerState.status}
+            // state={registerState.status}
             extraClasses="text-black font-semibold bg-gradient-to-r from-[#02c399] via-[#02c399] to-yellow-accent"
             block
           >
