@@ -1,17 +1,13 @@
 import { faker } from "@faker-js/faker";
 import { act, render, fireEvent } from "@testing-library/react";
 import RegisterForm from "@/components/auth/register/form.register";
-import { Provider } from "react-redux";
-import store from "@/redux/store";
 
 describe("Register Form", () => {
   const mockOnSubmit = jest.fn();
 
   it("fill input forms", async () => {
     const { getByPlaceholderText, getByRole } = render(
-      <Provider store={store}>
-        <RegisterForm onSubmit={mockOnSubmit} />
-      </Provider>,
+      <RegisterForm onSubmit={mockOnSubmit} />,
     );
 
     await act(async () => {
@@ -36,9 +32,7 @@ describe("Register Form", () => {
   describe("with invalid email", () => {
     it("render email with validation error", async () => {
       const { getByPlaceholderText } = render(
-        <Provider store={store}>
-          <RegisterForm onSubmit={mockOnSubmit} />
-        </Provider>,
+        <RegisterForm onSubmit={mockOnSubmit} />,
       );
 
       const emailInput = getByPlaceholderText("Email");
@@ -57,9 +51,7 @@ describe("Register Form", () => {
   describe("with invalid username", () => {
     it("render username with validation error", async () => {
       const { getByPlaceholderText } = render(
-        <Provider store={store}>
-          <RegisterForm onSubmit={mockOnSubmit} />
-        </Provider>,
+        <RegisterForm onSubmit={mockOnSubmit} />,
       );
 
       const usernameInput = getByPlaceholderText("Username");
@@ -78,9 +70,7 @@ describe("Register Form", () => {
   describe("with invalid password", () => {
     it("render password with validation error", async () => {
       const { getByPlaceholderText } = render(
-        <Provider store={store}>
-          <RegisterForm onSubmit={mockOnSubmit} />
-        </Provider>,
+        <RegisterForm onSubmit={mockOnSubmit} />,
       );
 
       const passwordInput = getByPlaceholderText("Password");
