@@ -9,7 +9,7 @@ const useAppStore = create<AppState>()(
   devtools(
     persist(
       (set) => ({
-        name: "Nympth",
+        name: "Nymph",
       }),
       {
         name: "app-storage",
