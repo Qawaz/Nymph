@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 
 const currentUserID = 1;
 
@@ -8,22 +8,28 @@ export interface Message {
   content: string;
 }
 
-const Message = ({ user_id, content }: Message): JSX.Element => {
+const Message = ({
+  user_id,
+  content,
+  showAvatar,
+}: Message & { showAvatar: boolean }): JSX.Element => {
   return (
     <div
       className={`flex ${
-        currentUserID === user_id ? "flex-row" : "flex-row-reverse pl-20"
+        currentUserID === user_id ? "flex-row pr-20" : "flex-row-reverse pl-20"
       } mb-5`}
     >
-      <figure>
-        <Image
-          src={"https://avatarfiles.alphacoders.com/217/217821.png"}
-          alt={"username"}
-          width={50}
-          height={50}
-          className="rounded-full "
-          layout="fixed"
-        />
+      <figure className="w-12 h-12 flex-shrink-0">
+        {showAvatar && (
+          <Image
+            src={"https://avatarfiles.alphacoders.com/217/217821.png"}
+            alt={"username"}
+            width={48}
+            height={48}
+            className="rounded-full "
+            layout="fixed"
+          />
+        )}
       </figure>
       <p
         className={`text-gray-200 text-sm leading-6 ${

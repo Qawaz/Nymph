@@ -1,6 +1,5 @@
-import { useContext } from "react";
-import Image from "next/image";
-import { MessengerContext } from "@/pages/messenger";
+import Image from "next/future/image";
+import useConversationStore from "@/zustand/conversationStore";
 
 export type Conversation = {
   id: number;
@@ -17,13 +16,13 @@ const Conversation = ({
   last_message,
   last_time_message,
 }: Conversation) => {
-  const messengerContext = useContext(MessengerContext);
+  const setConversation = useConversationStore(
+    (state) => state.setConversation,
+  );
 
   return (
     <div
-      onClick={() =>
-        messengerContext.setActiveConversation({ type: "conversation", id })
-      }
+      onClick={() => setConversation({ id, username, avatar_url })}
       className="flex flex-grow items-center hover:cursor-pointer px-4 mb-5"
     >
       <Image
