@@ -1,11 +1,5 @@
 import Button from "@/components/elements/button";
 import Input from "@/components/elements/input";
-import { useAppDispatch, useAppSelector } from "@/redux/appHooks";
-import {
-  AuthState,
-  setAddress,
-  signupWithPhantom,
-} from "@/redux/features/auth/authSlice";
 import { useState } from "react";
 import XMark from "@/components/elements/xMark";
 import Link from "next/link";
@@ -15,16 +9,16 @@ import BaseLayout from "@/components/layouts/baseLayout";
 const ConnectWallet = () => {
   const [username, setUsername] = useState("");
 
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
-  const authState: AuthState = useAppSelector((state) => state.auth);
+  // const authState: AuthState = useAppSelector((state) => state.auth);
 
-  const saveAddressToStore = (address: string) => dispatch(setAddress(address));
+  // const saveAddressToStore = (address: string) => dispatch(setAddress(address));
 
   const connectAccount = async () => {
     const response = await (window as any).solana.connect();
 
-    await saveAddressToStore(response.publicKey.toString());
+    // await saveAddressToStore(response.publicKey.toString());
 
     const encodedMessage = new TextEncoder().encode(authState.nonce);
     const signedMessage = await (window as any).solana.signMessage(
@@ -32,15 +26,15 @@ const ConnectWallet = () => {
       "utf8",
     );
 
-    dispatch(
-      signupWithPhantom({
-        username,
-        wallet_type: "phantom",
-        public_key: response.publicKey.toString(),
-        signature: signedMessage,
-        nonce: authState.nonce,
-      }),
-    );
+    // dispatch(
+    //   signupWithPhantom({
+    //     username,
+    //     wallet_type: "phantom",
+    //     public_key: response.publicKey.toString(),
+    //     signature: signedMessage,
+    //     nonce: authState.nonce,
+    //   }),
+    // );
   };
 
   return (
@@ -82,7 +76,7 @@ const ConnectWallet = () => {
                 />
               </div>
             </div>
-            <div className="mb-0">
+            {/* <div className="mb-0">
               {authState.errors &&
                 authState.errors.map((error, index) => (
                   <p
@@ -93,7 +87,7 @@ const ConnectWallet = () => {
                     {error.message}
                   </p>
                 ))}
-            </div>
+            </div> */}
             <Link href="/login" passHref>
               <a className="block text-sm text-white mb-8">
                 Already a member? click to login
