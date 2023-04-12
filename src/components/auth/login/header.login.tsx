@@ -1,12 +1,12 @@
 const LoginHeaderForm = () => {
   return (
-    <div className="mt-24 mb-16">
-      <h1 className="font-semibold text-5xl text-center text-white mb-8">
-        Lets sign you in<span className="text-blue-500">.</span>
+    <div className="mb-4">
+      <h1 className="text-4xl font-semibold mb-2">
+        Welcome Back<span className="text-blue-500 ml-0.5">.</span>
       </h1>
-      <h3 className="font-urbanist font-medium text-xl text-center text-gray-400 mb-8">
-        Welcome Back, You have been missed...
-      </h3>
+      <p className="text-gray-600">
+        Enter to unlimited access to data and information.
+      </p>
     </div>
   );
 };
