@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import SharedMedia from "./sharedMedia";
 import Guild from "./guild";
 import ConversationNotification from "./conversationNotification";

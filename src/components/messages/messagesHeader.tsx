@@ -1,5 +1,5 @@
 import useConversationStore from "@/zustand/conversationStore";
-import Image from "next/future/image";
+import Image from "next/image";
 
 const MessagesHeader = (): JSX.Element => {
   const currentConversation = useConversationStore(
