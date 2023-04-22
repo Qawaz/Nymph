@@ -3,11 +3,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import $axios from "@/utilities/axios";
 import { AxiosError } from "axios";
 
-type Credentials = {
-  username_or_email: string;
-  password: string;
-};
-
 type Token = {
   access_token: string;
   expires: string;
@@ -49,11 +44,11 @@ const providers = [
       username_or_email: { label: "Username or Email", type: "text" },
       password: { label: "Password", type: "password" },
     },
-    async authorize(credentials: Credentials): Promise<UserResponse | null> {
+    async authorize(credentials): Promise<UserResponse | null> {
       try {
-        const { data } = await $axios.post<UserResponse>("/auth/signin", {
-          username_or_email: credentials.username_or_email,
-          password: credentials.password,
+        const { data } = await $axios.post<UserResponse>("/auth/login", {
+          username_or_email: credentials!.username_or_email,
+          password: credentials!.password,
         });
 
         if (data.access_token) {

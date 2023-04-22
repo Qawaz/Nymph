@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import useConversationStore from "@/zustand/conversationStore";
 
 export type Conversation = {
