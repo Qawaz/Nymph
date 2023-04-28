@@ -23,7 +23,7 @@ const Register = () => {
       redirect: false,
     }).then((response) => {
       response?.status === 200
-        ? router.push("/dashboard")
+        ? router.push("/messenger")
         : setError(response?.error || "");
 
       return false;
