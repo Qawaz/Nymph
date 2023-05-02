@@ -13,7 +13,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
   ({ error = false, extraClassName, placeholder, ...props }, ref) => (
     <>
       <input
-        className={`appearance-none input placeholder:text-[#909090] border rounded-sm focus:border-yellowAccent outline-0 ${
+        className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-0 ${
           error ? "border-red-500" : "border-gray-800"
         } ${extraClassName}`}
         placeholder={placeholder}
@@ -23,14 +23,6 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
       <style jsx>
         {`
           input {
-            display: block;
-            padding: 1.2rem 1.4rem;
-            background: #222222;
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
-            font-size: 1rem;
-            color: white;
             transition: all 200ms;
           }
         `}

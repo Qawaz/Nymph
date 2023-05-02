@@ -12,13 +12,6 @@ const BaseLayout = ({ children }: Props): JSX.Element => {
       <main className="flex justify-center">
         <div className="container">{children}</div>
       </main>
-      <style jsx>
-        {`
-          main {
-            background-color: #131417;
-          }
-        `}
-      </style>
     </>
   );
 };

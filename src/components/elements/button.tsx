@@ -25,7 +25,7 @@ const Button = ({
       type={type}
       className={`${block && "w-full"} ${
         disabled && "opacity-75"
-      } font-medium text-base text-white disabled:cursor-not-allowed rounded-sm px-4 py-4 ${extraClasses}`}
+      } font-medium text-base disabled:cursor-not-allowed px-4 py-4 ${extraClasses}`}
       onClick={onClick}
       disabled={disabled}
       {...props}
