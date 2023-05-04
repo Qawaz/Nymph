@@ -3,11 +3,10 @@ import { z } from "Zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "@/components/elements";
 import ConnectWithGoogleButton from "@/components/auth/login/connectWithGoogleButton";
-
-type Props = {
-  onSubmit: SubmitHandler<Inputs>;
-  error: string;
-};
+import $axios from "@/utilities/axios";
+import { useEffect, useState } from "react";
+import { ButtonProps } from "@/components/elements/button";
+import { useRouter } from "next/router";
 
 const registerSchema = z.object({
   username: z.string().min(3).max(255),
@@ -20,7 +19,11 @@ const registerSchema = z.object({
 
 type Inputs = z.infer<typeof registerSchema>;
 
-const RegisterForm = ({ onSubmit, error }: Props): JSX.Element => {
+const RegisterForm = (): JSX.Element => {
+  const router = useRouter();
+
+  const [submitState, setSubmitState] = useState<ButtonProps["state"]>("idle");
+
   const {
     register,
     handleSubmit,
@@ -29,6 +32,29 @@ const RegisterForm = ({ onSubmit, error }: Props): JSX.Element => {
     mode: "onBlur",
     resolver: zodResolver(registerSchema),
   });
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    setSubmitState("loading");
+    try {
+      await $axios.post("/auth/register", data);
+      setSubmitState("success");
+      router.push("/messenger");
+    } catch (exception) {
+      setSubmitState("failed");
+    }
+  };
+
+  useEffect(() => {
+    if (submitState === "failed") {
+      const timer = setTimeout(() => {
+        setSubmitState("idle");
+      }, 2000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [submitState]);
 
   return (
     <div className="outline-none py-4">
@@ -90,9 +116,10 @@ const RegisterForm = ({ onSubmit, error }: Props): JSX.Element => {
             />
           </div>
         </div>
-        {error && <div className="text-red-500 mb-3">{error}</div>}
+        {/* {error && <div className="text-red-500 mb-3">{error}</div>} */}
         <div>
           <Button
+            state={submitState}
             type="submit"
             extraClasses="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-3 mr-2 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             block
