@@ -1,39 +1,34 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-// import * as yup from "yup";
-// import { yupResolver } from "@hookform/resolvers/yup";
+import { z } from "Zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "@/components/elements";
 import ConnectWithGoogleButton from "@/components/auth/login/connectWithGoogleButton";
-
-type Inputs = {
-  username: string;
-  email: string;
-  password: string;
-};
 
 type Props = {
   onSubmit: SubmitHandler<Inputs>;
   error: string;
 };
 
-// const schema = yup.object().shape({
-//   username: yup.string().min(3).max(255).required(),
-//   email: yup.string().email().required(),
-//   password: yup
-//     .string()
-//     .max(32)
-//     .matches(
-//       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-//       "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character",
-//     )
-//     .required(),
-// });
+const registerSchema = z.object({
+  username: z.string().min(3).max(255),
+  email: z.string().email(),
+  password: z
+    .string()
+    .max(32)
+    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/),
+});
+
+type Inputs = z.infer<typeof registerSchema>;
 
 const RegisterForm = ({ onSubmit, error }: Props): JSX.Element => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>({ mode: "onBlur" });
+  } = useForm<Inputs>({
+    mode: "onBlur",
+    resolver: zodResolver(registerSchema),
+  });
 
   return (
     <div className="outline-none py-4">
