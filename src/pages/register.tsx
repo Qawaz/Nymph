@@ -40,7 +40,7 @@ const Register = () => {
         </div>
       </div>
       <div className="text-gray-300 text-center text-base pb-16">
-        <Link href="/login">Already have an account? Login here</Link>
+        <Link href="/auth">Already have an account? Login here</Link>
       </div>
       <div className="flex py-10">
         <div className="text-gray-400 text-center">Privacy Policy</div>

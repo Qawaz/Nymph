@@ -1,8 +1,12 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Button, Input } from "@/components/elements";
-import { Inputs } from "@/pages/login";
 import ConnectWithGoogleButton from "@/components/auth/login/connectWithGoogleButton";
 import ForgotNRememberLogin from "@/components/auth/login/forgotNRemember.login";
+
+type Inputs = {
+  username_or_email: string;
+  password: string;
+};
 
 type Props = {
   onSubmit: SubmitHandler<Inputs>;

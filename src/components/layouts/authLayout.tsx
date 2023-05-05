@@ -11,7 +11,7 @@ const AuthLayout = ({ children }: Props): JSX.Element => {
       <div className="container">
         <div className="h-screen py-24">
           <div className="conatiner bg-white h-full grid grid-cols-5 shadow-sm shadow-gray-200">
-            <div className="col-span-2">{children}</div>
+            <div className="col-span-2 overflow-hidden">{children}</div>
             <div className="relative col-span-3">
               <Image src="/Nymph.png" alt="me" layout={"fill"} />
             </div>
