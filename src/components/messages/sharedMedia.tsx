@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export type SharedMedia = typeof media[number];
+export type SharedMedia = (typeof media)[number];
 
 const media = [
   {

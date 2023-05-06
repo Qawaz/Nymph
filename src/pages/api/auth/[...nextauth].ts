@@ -44,7 +44,7 @@ const providers = [
       username_or_email: { label: "Username or Email", type: "text" },
       password: { label: "Password", type: "password" },
     },
-    async authorize(credentials): Promise<UserResponse | null> {
+    async authorize(credentials) {
       try {
         const { data } = await $axios.post<UserResponse>("/auth/login", {
           username_or_email: credentials!.username_or_email,
@@ -52,7 +52,7 @@ const providers = [
         });
 
         if (data.access_token) {
-          return data as UserResponse;
+          return data as any;
         }
 
         return null;
