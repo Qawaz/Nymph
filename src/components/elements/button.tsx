@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import Spinner from "./spinner";
 
-type ButtonProps = {
+export type ButtonProps = {
   type?: "button" | "submit" | "reset" | undefined;
   block?: boolean;
   disabled?: boolean;
@@ -25,7 +25,14 @@ const Button = ({
       type={type}
       className={`${block && "w-full"} ${
         disabled && "opacity-75"
-      } font-medium text-base disabled:cursor-not-allowed px-4 py-4 ${extraClasses}`}
+      } font-medium text-base disabled:cursor-not-allowed px-4 py-4 ${extraClasses} 
+      ${
+        state === "failed" &&
+        "bg-red-500 pointer-events-none cursor-not-allowed"
+      }
+      ${state === "loading" && "cursor-progress opacity-50"}
+      ${state === "success" && "cursor-not-allowed opacity-75"}
+      }`}
       onClick={onClick}
       disabled={disabled}
       {...props}
@@ -49,7 +56,7 @@ const Button = ({
           case "failed":
             return (
               <div className="flex justify-center items-center">
-                <span className="pl-3">Failed</span>
+                <span className="pl-3">Something went wrong...</span>
               </div>
             );
           case "idle":
