@@ -1,3 +1,4 @@
+import ActivitiesIcon from "./activities";
 import AppleIcon from "./apple";
 import AttachIcon from "./attach";
 import ContactsIcon from "./contacts";
@@ -9,6 +10,7 @@ import SendIcon from "./send";
 import Unauthorized from "./unathorized";
 
 export {
+  ActivitiesIcon,
   AppleIcon,
   AttachIcon,
   ContactsIcon,
