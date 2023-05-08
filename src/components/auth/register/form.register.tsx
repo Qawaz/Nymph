@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { z } from "Zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "@/components/elements";
 import ConnectWithGoogleButton from "@/components/auth/login/connectWithGoogleButton";
@@ -38,7 +38,7 @@ const RegisterForm = (): JSX.Element => {
     try {
       await $axios.post("/auth/register", data);
       setSubmitState("success");
-      router.push("/messenger");
+      await router.push("/messenger");
     } catch (exception) {
       setSubmitState("failed");
     }
