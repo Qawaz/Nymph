@@ -1,8 +1,8 @@
 import { useSession } from "next-auth/react";
 import { ReactNode } from "react";
-import Unauthorized from "@/components/unauthorized";
 import Nav from "@/components/layouts/nav";
 import MessengerSidebar from "./messengerSidebar";
+import { Unauthorized } from "@/components/icons";
 
 type Props = {
   children: ReactNode;
@@ -17,7 +17,7 @@ const DashboardLayout = ({ children }: Props): JSX.Element => {
 
   return (
     <>
-      <main className="flex bg-gradient-to-b from-[#3b3132] to-[#271b25]">
+      <main className="flex bg-white">
         <Nav />
         <MessengerSidebar />
         {children}

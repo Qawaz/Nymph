@@ -4,14 +4,13 @@ import Guild from "./guild";
 import ConversationNotification from "./conversationNotification";
 import ConversationNotes from "./conversationNotes";
 import useConversationStore from "@/zustand/conversationStore";
-import useGetConversationMeta from "@/hooks/conversationMeta";
 
 const MessagesDetails = (): JSX.Element => {
   const currentConversation = useConversationStore(
     (state) => state.currentConversation,
   );
 
-  const { data, isLoading } = useGetConversationMeta(currentConversation.id);
+  // const { data, isLoading } = useGetConversationMeta(currentConversation.id);
 
   return (
     <div className="w-[300px] flex-shrink-0 overflow-y-scroll max-h-screen px-4 py-10">
@@ -28,7 +27,7 @@ const MessagesDetails = (): JSX.Element => {
         {currentConversation.username}
       </h2>
       <p className="text-gray-200 text-sm text-center font-semibold mt-1">
-        Something in your eye {data}
+        Something in your eye
       </p>
       <h3 className="text-left text-gray-200 text-sm mt-10 mb-1">
         Description
