@@ -38,8 +38,8 @@ const SharedMedia = (): JSX.Element => {
   };
 
   return (
-    <div className="border-b border-[#333] pb-6 mb-4">
-      <div className="flex-grow text-gray-200 text-sm mb-3">Media</div>
+    <div className="border-b pb-6 mb-4">
+      <div className="flex-grow text-gray-800 text-sm mb-3">Media</div>
       <div className="grid grid-cols-2 gap-2">
         {media.map((item) => renderMedia(item))}
       </div>
