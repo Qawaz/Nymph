@@ -6,12 +6,14 @@ import NavItem from "@/components/nav/items.nav";
 
 const shortcuts = [
   {
-    title: "Contacts",
+    title: "Friends",
     icon: <ContactsIcon className="mr-3" />,
+    destination: "/messenger/friends",
   },
   {
     title: "New Message",
     icon: <NewMessageIcon className="mr-3" />,
+    destination: "/messenger/friends",
   },
 ];
 
