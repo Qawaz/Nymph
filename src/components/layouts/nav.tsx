@@ -34,7 +34,7 @@ const Nav = () => {
   ];
 
   return (
-    <div className="flex flex-col bg-white py-3">
+    <div className="flex flex-col bg-white py-3 border-r">
       <div className="flex-grow">
         <div className="flex items-center px-3">
           <Image
