@@ -1,3 +1,5 @@
+import React from "react";
+
 export type Props = {
   title: string;
   icon: React.ReactNode;
@@ -5,7 +7,7 @@ export type Props = {
 
 const Shortcut = ({ title, icon }: Props) => (
   <div className="flex items-center hover:cursor-pointer mb-5">
-    {icon} <span className="text-sm text-gray-200 pl-2">{title}</span>
+    {icon} <span className="text-sm text-gray-700 pl-2">{title}</span>
   </div>
 );
 

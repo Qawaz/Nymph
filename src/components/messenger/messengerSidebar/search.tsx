@@ -13,7 +13,7 @@ const MessageSidebarSearch = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="px-4">
       <input
         type="text"
-        className="w-full bg-[#252525] text-sm rounded placeholder:text-gray-500 py-3 px-4 mb-4"
+        className="w-full bg-[#edf1ff] text-sm rounded text-gray-900 placeholder:text-gray-500 py-3 px-4 mb-4"
         placeholder="Search..."
         {...register("search")}
       />
