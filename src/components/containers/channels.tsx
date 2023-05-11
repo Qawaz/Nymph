@@ -4,33 +4,31 @@ import Conversation, {
 
 const conversations: ConversationType[] = [
   {
-    id: 1,
-    avatar_url: "https://avatarfiles.alphacoders.com/217/217821.png",
-    username: "Shina Mashiro",
+    id: 3,
+    avatar_url: "/0_1_640_Nqq.webp",
+    username: "Knights of Valur",
     last_message: "That would be nice...",
-    last_time_message: "2mins ago",
+    last_time_message: "2m ago",
+  },
+  {
+    id: 1,
+    avatar_url: "/0_1_640_Nqq.webp",
+    username: "Damage Control",
+    last_message: "That would be nice...",
+    last_time_message: "4h ago",
   },
   {
     id: 2,
-    avatar_url: "https://avatarfiles.alphacoders.com/217/217821.png",
-    username: "Shina Mashiro",
+    avatar_url: "/0_1_640_Nqq.webp",
+    username: "Interneti",
     last_message: "That would be nice...",
-    last_time_message: "2mins ago",
-  },
-  {
-    id: 3,
-    avatar_url: "https://avatarfiles.alphacoders.com/217/217821.png",
-    username: "Shina Mashiro",
-    last_message: "That would be nice...",
-    last_time_message: "2mins ago",
+    last_time_message: "yesterday",
   },
 ];
 
 const Channels = (): JSX.Element => (
-  <div className="my-10">
-    <div className="text-sm text-gray-400 uppercase mt-6 mb-4 px-4">
-      Channels
-    </div>
+  <div className="mt-6 mb-10">
+    <div className="text-sm text-black uppercase mt-6 mb-4 px-4">Channels</div>
     {conversations.map((conversation) => (
       <Conversation key={conversation.id} {...conversation} />
     ))}

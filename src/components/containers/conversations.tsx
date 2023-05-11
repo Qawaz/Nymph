@@ -5,39 +5,37 @@ import Conversation, {
 const conversations: ConversationType[] = [
   {
     id: 1,
-    avatar_url: "https://avatarfiles.alphacoders.com/217/217821.png",
+    avatar_url: "/0_1_640_Nqq.webp",
     username: "Shina Mashiro",
     last_message: "That would be nice...",
-    last_time_message: "2mins ago",
+    last_time_message: "2m ago",
   },
   {
     id: 2,
-    avatar_url: "https://avatarfiles.alphacoders.com/217/217821.png",
-    username: "Shina Mashiro",
+    avatar_url: "/0_1_640_Nqq.webp",
+    username: "Vahid Azizi",
     last_message: "That would be nice...",
-    last_time_message: "2mins ago",
+    last_time_message: "2m ago",
   },
   {
     id: 3,
-    avatar_url: "https://avatarfiles.alphacoders.com/217/217821.png",
-    username: "Shina Mashiro",
+    avatar_url: "/0_1_640_Nqq.webp",
+    username: "Mohammad Hossein",
     last_message: "That would be nice...",
-    last_time_message: "2mins ago",
+    last_time_message: "2m ago",
   },
   {
     id: 4,
-    avatar_url: "https://avatarfiles.alphacoders.com/217/217821.png",
-    username: "Shina Mashiro",
+    avatar_url: "/0_1_640_Nqq.webp",
+    username: "Seyed",
     last_message: "That would be nice...",
-    last_time_message: "2mins ago",
+    last_time_message: "2m ago",
   },
 ];
 
 const Conversations = (): JSX.Element => (
   <div>
-    <div className="text-sm text-gray-400 uppercase mt-6 mb-4 px-4">
-      Messages
-    </div>
+    <div className="text-sm text-black uppercase mt-6 mb-4 px-4">Messages</div>
     {conversations.map((conversation) => (
       <Conversation key={conversation.id} {...conversation} />
     ))}

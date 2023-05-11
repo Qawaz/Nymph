@@ -4,7 +4,7 @@ import MessagesContainer from "@/components/messages/messagesContainer";
 
 const Messages = () => {
   return (
-    <div className="flex flex-col flex-grow max-h-screen bg-gradient-to-b from-[#271c1c] to-[#27161e]">
+    <div className="flex flex-col flex-grow max-h-screen bg-white">
       <MessagesHeader />
       <MessagesContainer />
       <MessagesFooter />
