@@ -23,7 +23,7 @@ const Conversation = ({
   return (
     <div
       onClick={() => setConversation({ id, username, avatar_url })}
-      className="flex flex-grow items-center hover:cursor-pointer px-4 mb-5"
+      className="flex flex-grow items-center hover:cursor-pointer hover:bg-[#f5f7f9] px-4 py-4"
     >
       <figure className="relative w-11 h-11 mr-1">
         <Image
