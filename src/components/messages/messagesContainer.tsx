@@ -45,18 +45,18 @@ const messages = [
     username: "SecretKeeper",
     content: "That would be nice to have you in my team",
   },
-  {
-    id: 6,
-    user_id: 2,
-    username: "SecretKeeper",
-    content: "That would be nice to have you in my team",
-  },
-  {
-    id: 7,
-    user_id: 2,
-    username: "SecretKeeper",
-    content: "That would be nice to have you in my team",
-  },
+  // {
+  //   id: 6,
+  //   user_id: 2,
+  //   username: "SecretKeeper",
+  //   content: "That would be nice to have you in my team",
+  // },
+  // {
+  //   id: 7,
+  //   user_id: 2,
+  //   username: "SecretKeeper",
+  //   content: "That would be nice to have you in my team",
+  // },
   {
     id: 8,
     user_id: 2,

@@ -5,8 +5,8 @@ const ConversationNotification = () => {
   const [enabled, setEnabled] = useState(true);
 
   return (
-    <div className="flex border-t border-b border-[#333] py-5 mt-5 mb-5">
-      <div className="flex-grow text-gray-200 text-sm">Notifications</div>
+    <div className="flex border-t border-b py-5 mt-5 mb-5">
+      <div className="flex-grow text-gray-800 text-sm">Notifications</div>
       <Switch
         checked={enabled}
         onChange={setEnabled}
