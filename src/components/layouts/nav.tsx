@@ -14,22 +14,27 @@ const Nav = () => {
     {
       title: "Home",
       icon: <HomeIcon className="w-5 h-5 mr-2" />,
+      destination: "/messenger",
     },
     {
       title: "Dashboard",
       icon: <CreditCardIcon className="w-5 h-5 mr-2" />,
+      destination: "/messenger",
     },
     {
       title: "Messenger",
       icon: <BoltIcon className="w-5 h-5 mr-2" />,
+      destination: "/messenger",
     },
     {
       title: "Activities",
       icon: <ActivitiesIcon className="w-6 h-6 mr-2" />,
+      destination: "/messenger",
     },
     {
       title: "Support",
       icon: <LifeBuoy className="w-6 h-6 mr-2" />,
+      destination: "/messenger",
     },
   ];
 

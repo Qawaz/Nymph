@@ -6,29 +6,29 @@ const BlogsSection: FunctionComponent = (): JSX.Element => {
     {
       tag: "Version 1.0",
       title: "Stable version of whisper messenger released!",
-      image_url:
-        "https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=500&q=80",
+      image_url: "",
+      // "https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=500&q=80",
       date: "2 Days ago",
     },
     {
       tag: "Version 1.0",
       title: "Stable version of whisper messenger released!",
-      image_url:
-        "https://images.unsplash.com/photo-1620748229976-a78c7e0932a0?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=500",
+      image_url: "",
+      // "https://images.unsplash.com/photo-1620748229976-a78c7e0932a0?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=500",
       date: "2 Days ago",
     },
     {
       tag: "Version 1.0",
       title: "Stable version of whisper messenger released!",
-      image_url:
-        "https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=500&q=80",
+      image_url: "",
+      // "https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=500&q=80",
       date: "2 Days ago",
     },
     {
       tag: "Version 1.0",
       title: "Stable version of whisper messenger released!",
-      image_url:
-        "https://images.unsplash.com/photo-1620748229976-a78c7e0932a0?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=500",
+      image_url: "",
+      // "https://images.unsplash.com/photo-1620748229976-a78c7e0932a0?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=500",
       date: "2 Days ago",
     },
   ];

@@ -7,10 +7,12 @@ const NavFooter = () => {
     {
       title: "Notifications",
       icon: <BellIcon className="w-5 h-5 mr-2" />,
+      destination: "/messenger",
     },
     {
       title: "Settings",
       icon: <Cog8ToothIcon className="w-6 h-6 mr-2" />,
+      destination: "/messenger",
     },
   ];
   return (
