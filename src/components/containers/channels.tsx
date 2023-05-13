@@ -1,3 +1,4 @@
+import { faker } from "@faker-js/faker";
 import Conversation, {
   Conversation as ConversationType,
 } from "@/components/messenger/messengerSidebar/conversation";
@@ -5,21 +6,21 @@ import Conversation, {
 const conversations: ConversationType[] = [
   {
     id: 3,
-    avatar_url: "/0_1_640_Nqq.webp",
+    avatar_url: faker.image.url({ width: 50, height: 50 }),
     username: "Knights of Valur",
     last_message: "That would be nice...",
     last_time_message: "2m ago",
   },
   {
     id: 1,
-    avatar_url: "/0_1_640_Nqq.webp",
+    avatar_url: faker.image.url({ width: 50, height: 50 }),
     username: "Damage Control",
     last_message: "That would be nice...",
     last_time_message: "4h ago",
   },
   {
     id: 2,
-    avatar_url: "/0_1_640_Nqq.webp",
+    avatar_url: faker.image.url({ width: 50, height: 50 }),
     username: "Interneti",
     last_message: "That would be nice...",
     last_time_message: "yesterday",
